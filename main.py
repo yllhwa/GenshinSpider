@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+import os
 
 
 from mainwindow import Ui_MainWindow
@@ -18,11 +19,12 @@ def set_up_window(mainwindow, ui):
 
 
 def main():
-    QtWidgets.QApplication.setAttribute(
-        QtCore.Qt.AA_EnableHighDpiScaling, True)
-    QtWidgets.QApplication.setAttribute(
-        QtCore.Qt.AA_UseHighDpiPixmaps, True)
+    QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QtWidgets.QApplication(sys.argv)
+    # font = QtGui.QFont("宋体")
+    # pointsize = font.pointSize()
+    # font.setPixelSize(int(pointsize*90/72))
+    # app.setFont(font)
     mainwindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     set_up_window(mainwindow, ui)
