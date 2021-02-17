@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>484</width>
+    <height>552</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="grab_btn">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>500</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>抓取</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>461</width>
+      <height>481</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>圣遗物信息</string>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>441</width>
+       <height>451</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="2">
+       <widget class="QLabel" name="star_label">
+        <property name="text">
+         <string>星级</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="3">
+       <widget class="QLineEdit" name="vice3_num_edit"/>
+      </item>
+      <item row="5" column="3">
+       <widget class="QLineEdit" name="main_num_edit"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="kind_label">
+        <property name="text">
+         <string>类型</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2">
+       <widget class="QLabel" name="vice3_attr_num">
+        <property name="text">
+         <string>数值</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="main_attr_edit"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="name_edit"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="level_label">
+        <property name="text">
+         <string>等级</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="level_edit"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="vice1_attr_label">
+        <property name="text">
+         <string>副属性1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="set_label">
+        <property name="text">
+         <string>所属套装</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QLabel" name="main_num_label">
+        <property name="text">
+         <string>数值</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="kind_edit"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="vice1_attr_edit"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="vice2_attr_label">
+        <property name="text">
+         <string>副属性2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="QLabel" name="vice1_attr_num">
+        <property name="text">
+         <string>数值</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="main_attr_label">
+        <property name="text">
+         <string>主属性</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="3">
+       <widget class="QLineEdit" name="vice2_num_edit"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="name_label">
+        <property name="text">
+         <string>名称</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QLabel" name="vice2_attr_num">
+        <property name="text">
+         <string>数值</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="vice3_attr_label">
+        <property name="text">
+         <string>副属性3</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="3">
+       <widget class="QLineEdit" name="vice1_num_edit"/>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="vice2_attr_edit"/>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="vice3_attr_edit"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="set_edit"/>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="vice4_attr_label">
+        <property name="text">
+         <string>副属性4</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLineEdit" name="vice4_attr_edit"/>
+      </item>
+      <item row="9" column="2">
+       <widget class="QLabel" name="vice4_attr_num">
+        <property name="text">
+         <string>数值</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="3">
+       <widget class="QLineEdit" name="vice4_num_edit"/>
+      </item>
+      <item row="2" column="3">
+       <widget class="QComboBox" name="star_box">
+        <property name="currentText">
+         <string>5</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="save_btn">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>500</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>保存</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
