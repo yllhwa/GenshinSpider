@@ -26,12 +26,12 @@
 抓取：  
 [![ygW7RJ.md.png](https://s3.ax1x.com/2021/02/17/ygW7RJ.md.png)](https://imgchr.com/i/ygW7RJ)  
 输出表格：  
-[![ygWoiF.md.png](https://s3.ax1x.com/2021/02/17/ygWoiF.md.png)](https://imgchr.com/i/ygWoiF)  
+[![ygWoiF.md.png](https://s3.ax1x.com/2021/02/17/ygWoiF.md.png)](https://imgchr.com/i/ygWoiF)
 
 ## TODO
 
-- [ ] 重构、整理代码(doing)
-- [ ] 常见不合理错误纠正
+- [x] 重构、整理代码(2021/2/17)
+- [ ] 常见不合理错误纠正(doing)
 - [ ] 其他界面抓取
 - [ ] 武器等抓取
 
