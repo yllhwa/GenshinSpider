@@ -25,50 +25,12 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.grab_btn.clicked.connect(self.on_grab_btn_clicked)
         self.save_btn.clicked.connect(self.on_save_btn_clicked)
 
-<<<<<<< HEAD
     def set_text(self, artifact):
-=======
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.grab_btn.setText(_translate("MainWindow", "抓取"))
-        self.groupBox.setTitle(_translate("MainWindow", "圣遗物信息"))
-        self.star_label.setText(_translate("MainWindow", "星级"))
-        self.kind_label.setText(_translate("MainWindow", "类型"))
-        self.vice3_attr_num.setText(_translate("MainWindow", "数值"))
-        self.level_label.setText(_translate("MainWindow", "等级"))
-        self.vice1_attr_label.setText(_translate("MainWindow", "副属性1"))
-        self.set_label.setText(_translate("MainWindow", "所属套装"))
-        self.main_num_label.setText(_translate("MainWindow", "数值"))
-        self.vice2_attr_label.setText(_translate("MainWindow", "副属性2"))
-        self.vice1_attr_num.setText(_translate("MainWindow", "数值"))
-        self.main_attr_label.setText(_translate("MainWindow", "主属性"))
-        self.name_label.setText(_translate("MainWindow", "名称"))
-        self.vice2_attr_num.setText(_translate("MainWindow", "数值"))
-        self.vice3_attr_label.setText(_translate("MainWindow", "副属性3"))
-        self.vice4_attr_label.setText(_translate("MainWindow", "副属性4"))
-        self.vice4_attr_num.setText(_translate("MainWindow", "数值"))
-        self.star_box.setCurrentText(_translate("MainWindow", "5"))
-        self.star_box.setItemText(0, _translate("MainWindow", "5"))
-        self.star_box.setItemText(1, _translate("MainWindow", "4"))
-        self.star_box.setItemText(2, _translate("MainWindow", "3"))
-        self.star_box.setItemText(3, _translate("MainWindow", "2"))
-        self.star_box.setItemText(4, _translate("MainWindow", "1"))
-        self.save_btn.setText(_translate("MainWindow", "保存"))
-
-    def on_grab_btn_clicked(self):
-        # self.window.showMinimized()
-        img = print_screen()
-        weight, height = img.size
-        box = (weight*0.67, height*0.15, weight*0.936, height*0.846)
-        img = img.crop(box)
-        output_buffer = BytesIO()
-        img.save(output_buffer, format='JPEG')
-        byte_data = output_buffer.getvalue()
-        img = base64.b64encode(byte_data)
-        access_token = "*********************"
-        artifact = get_stat(img, access_token)
->>>>>>> 95307e2555f99021d9684a41f0a5cd39176c0884
+        """
+        将圣遗物数据显示到界面上
+        :param artifact: 圣遗物对象
+        :return: None
+        """
         self.name_edit.setText(artifact.name)
         self.kind_edit.setText(artifact.set_pieces)
         self.set_edit.setText(artifact.set_name)
@@ -85,7 +47,13 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.vice4_attr_edit.setText(artifact.vice_stat3)
         self.vice4_num_edit.setText(artifact.vice_stat3_value)
 
-    def get_text(self, output):
+    def get_text(self):
+        """
+        获取界面上的圣遗物数据到字典
+        :param: None
+        :return: 圣遗物数据字典
+        """
+        output = {}
         try:
             output['name'] = self.name_edit.text()
             output['kind'] = self.kind_edit.text()
@@ -113,14 +81,14 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
         img.save(output_buffer, format='JPEG')
         byte_data = output_buffer.getvalue()
         img = b64encode(byte_data)
-        access_token = "***********"
+        access_token = "**********"
         artifact = get_stat(img, access_token)
         self.set_text(artifact)
         # self.window.showNormal()
 
     def on_save_btn_clicked(self):
         output = {}
-        output = self.get_text(output)
+        output = self.get_text()
         clipboard = QtWidgets.QApplication.clipboard()
         clipboard.setText(json.dumps(output, indent=4, ensure_ascii=False))
         self.add_to_excel(output)
