@@ -21,12 +21,12 @@
 
 ## 示例图片
 
-进入窗口模式：
-[![ygWHz9.md.png](https://s3.ax1x.com/2021/02/17/ygWHz9.md.png)](https://imgchr.com/i/ygWHz9)
-抓取：
-[![ygW7RJ.md.png](https://s3.ax1x.com/2021/02/17/ygW7RJ.md.png)](https://imgchr.com/i/ygW7RJ)
-输出表格：
-[![ygWoiF.md.png](https://s3.ax1x.com/2021/02/17/ygWoiF.md.png)](https://imgchr.com/i/ygWoiF)
+进入窗口模式：  
+[![ygWHz9.md.png](https://s3.ax1x.com/2021/02/17/ygWHz9.md.png)](https://imgchr.com/i/ygWHz9)  
+抓取：  
+[![ygW7RJ.md.png](https://s3.ax1x.com/2021/02/17/ygW7RJ.md.png)](https://imgchr.com/i/ygW7RJ)  
+输出表格：  
+[![ygWoiF.md.png](https://s3.ax1x.com/2021/02/17/ygWoiF.md.png)](https://imgchr.com/i/ygWoiF)  
 
 ## TODO
 
