@@ -172,7 +172,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         img.save(output_buffer, format='JPEG')
         byte_data = output_buffer.getvalue()
         img = base64.b64encode(byte_data)
-        access_token = "24.d2b7554472cf80ad6a247daebfc08379.2592000.1615947397.282335-18822674"
+        access_token = "*********************"
         artifact = get_stat(img, access_token)
         self.name_edit.setText(artifact.name)
         self.kind_edit.setText(artifact.set_pieces)
