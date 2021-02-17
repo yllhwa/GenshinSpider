@@ -44,7 +44,6 @@ def get_stat(img, access_token):
     request_url = request_url + "?access_token=" + access_token
     headers = {'content-type': 'application/x-www-form-urlencoded'}
     response = requests.post(request_url, data=params, headers=headers)
-    print(response.text)
 
     def get_set_list_index(result):
         """

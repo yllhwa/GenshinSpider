@@ -3,7 +3,7 @@ import win32con
 import win32gui
 import win32print
 from PIL import Image, ImageGrab
-import time
+from time import sleep
 
 
 def get_real_resolution():
@@ -45,6 +45,10 @@ def print_screen():
     handle = get_window_handle('原神')
     while (win32gui.IsIconic(handle)):
         pass
-    time.sleep(0.5)
+    sleep(0.5)
     (x1, y1, x2, y2) = get_window_pos(handle)
-    return ImageGrab.grab((x1, y1, x2, y2))
+    img = ImageGrab.grab((x1, y1, x2, y2))
+    weight, height = img.size
+    box = (weight*0.67, height*0.15, weight*0.936, height*0.846)
+    img = img.crop(box)
+    return img
