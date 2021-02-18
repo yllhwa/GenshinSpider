@@ -67,7 +67,7 @@ def get_set_name(result):
                 return j
 
 
-def get_stat(img, access_token):
+def get_stat(img, request_url, access_token):
     """
     OCR获取数据写入到圣遗物对象
     :param img: base64格式图像
@@ -75,9 +75,6 @@ def get_stat(img, access_token):
     :return: 圣遗物对象
     """
     params = {"image": img}
-    # 高精度和普通接口
-    #request_url = "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic"
-    request_url = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic"
     request_url = request_url + "?access_token=" + access_token
     headers = {'content-type': 'application/x-www-form-urlencoded'}
     response = post(request_url, data=params, headers=headers)

@@ -82,8 +82,7 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
         img.save(output_buffer, format='JPEG')
         byte_data = output_buffer.getvalue()
         img = b64encode(byte_data)
-        access_token = "**********"
-        artifact = get_stat(img, access_token)
+        artifact = get_stat(img, self.url, self.access_token)
         self.set_text(artifact)
         # self.window.showNormal()
 
