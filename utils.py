@@ -136,13 +136,11 @@ def get_stat(img, access_token):
             str_list = list(artifact.main_stat_value)
             str_list.insert(-2, '.')
             artifact.main_stat_value = "".join(str_list)
-            print('okok main')
         elif '.' in artifact.main_stat_value and artifact.main_stat_value[-1] != '%':
             print(artifact.main_stat_value[-1])
             str_list = list(artifact.main_stat_value)
             str_list.append('%')
             artifact.main_stat_value = "".join(str_list)
-            print('okok main')
         artifact.star = len(result[4])
         if result[5][0] == '+':
             artifact.lv = int(result[5])
@@ -156,8 +154,10 @@ def get_stat(img, access_token):
                         str_list = list(artifact.vice_stat0_value)
                         str_list.insert(-2, '.')
                         artifact.vice_stat0_value = "".join(str_list)
-                        print('okok1')
-
+                    if artifact.vice_stat0_value == '7':
+                        artifact.vice_stat0_value = '17'
+                    if artifact.vice_stat0_value == '1':
+                        artifact.vice_stat0_value = '11'
                 elif artifact.vice_stat1 == '':
                     artifact.vice_stat1 = item.split('+')[0]
                     artifact.vice_stat1_value = str(item.split('+')[1])
@@ -165,7 +165,10 @@ def get_stat(img, access_token):
                         str_list = list(artifact.vice_stat1_value)
                         str_list.insert(-2, '.')
                         artifact.vice_stat1_value = "".join(str_list)
-                        print('okok2')
+                    if artifact.vice_stat1_value == '7':
+                        artifact.vice_stat1_value = '17'
+                    if artifact.vice_stat1_value == '1':
+                        artifact.vice_stat1_value = '11'
                 elif artifact.vice_stat2 == '':
                     artifact.vice_stat2 = item.split('+')[0]
                     artifact.vice_stat2_value = str(item.split('+')[1])
@@ -173,7 +176,10 @@ def get_stat(img, access_token):
                         str_list = list(artifact.vice_stat2_value)
                         str_list.insert(-2, '.')
                         artifact.vice_stat2_value = "".join(str_list)
-                        print('okok3')
+                    if artifact.vice_stat2_value == '7':
+                        artifact.vice_stat2_value = '17'
+                    if artifact.vice_stat2_value == '1':
+                        artifact.vice_stat2_value = '11'
                 elif artifact.vice_stat3 == '':
                     artifact.vice_stat3 = item.split('+')[0]
                     artifact.vice_stat3_value = str(item.split('+')[1])
@@ -181,7 +187,10 @@ def get_stat(img, access_token):
                         str_list = list(artifact.vice_stat3_value)
                         str_list.insert(-2, '.')
                         artifact.vice_stat3_value = "".join(str_list)
-                        print('okok4')
+                    if artifact.vice_stat3_value == '7':
+                        artifact.vice_stat3_value = '17'
+                    if artifact.vice_stat3_value == '1':
+                        artifact.vice_stat3_value = '11'
         set_list_index = get_set_list_index(result)
         artifact.set_name = get_set_name(result)
         return artifact
