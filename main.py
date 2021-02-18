@@ -1,12 +1,12 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
-
+from PyQt5.QtCore import QCoreApplication, Qt
+from PyQt5.QtWidgets import QApplication
 from mainwindow import mainwindow
 
 
 def main():
-    QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
-    app = QtWidgets.QApplication(sys.argv)
+    QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    app = QApplication(sys.argv)
     win = mainwindow()
     win.show()
     sys.exit(app.exec_())
