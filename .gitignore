@@ -1,3 +1,5 @@
 Pipfile
 Pipfile.lock
 dist/*
+build/*
+*.spec

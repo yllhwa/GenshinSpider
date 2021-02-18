@@ -1,6 +1,5 @@
 from fuzzywuzzy.fuzz import partial_ratio
-import requests
-from math import sqrt
+from requests import post
 
 
 class Artifact:
@@ -81,7 +80,7 @@ def get_stat(img, access_token):
     request_url = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic"
     request_url = request_url + "?access_token=" + access_token
     headers = {'content-type': 'application/x-www-form-urlencoded'}
-    response = requests.post(request_url, data=params, headers=headers)
+    response = post(request_url, data=params, headers=headers)
     print(response.text)
 
     def get_set_list_index(result):

@@ -2,7 +2,7 @@ import win32api
 import win32con
 import win32gui
 import win32print
-from PIL import Image, ImageGrab
+from PIL import ImageGrab
 from time import sleep
 
 

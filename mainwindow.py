@@ -8,7 +8,8 @@ import os
 
 from base64 import b64encode
 from io import BytesIO
-from pandas import DataFrame, read_excel
+from xlrd import open_workbook
+from xlutils.copy import copy
 
 from printScreen import print_screen
 from utils import *
@@ -95,41 +96,27 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
         QMessageBox.about(self, "成功", "已经复制到剪贴板以及保存到excel")
 
     def add_to_excel(self, output):
-        if not os.path.exists('输出.xlsx'):
-            dic1 = {'圣遗物名称': [],
-                    '圣遗物类型': [],
-                    '主属性': [],
-                    '主属性数值': [],
-                    '星级': [],
-                    '等级': [],
-                    '副属性1': [],
-                    '副属性1数值': [],
-                    '副属性2': [],
-                    '副属性2数值': [],
-                    '副属性3': [],
-                    '副属性3数值': [],
-                    '副属性4': [],
-                    '副属性4数值': [],
-                    '所属套装': []
-                    }
-            df = DataFrame(dic1)
-            df.to_excel('输出.xlsx', index=False)
-        sheet = read_excel('输出.xlsx')
-        insert_column = {'圣遗物名称': output['name'],
-                         '圣遗物类型': output['kind'],
-                         '主属性': output['main_attr'],
-                         '主属性数值': output['main_attr_value'],
-                         '星级': output['star'],
-                         '等级': output['lv'],
-                         '副属性1': output['vice1_attr'],
-                         '副属性1数值': output['vice1_num'],
-                         '副属性2': output['vice2_attr'],
-                         '副属性2数值': output['vice2_num'],
-                         '副属性3': output['vice3_attr'],
-                         '副属性3数值': output['vice3_num'],
-                         '副属性4': output['vice4_attr'],
-                         '副属性4数值': output['vice4_num'],
-                         '所属套装': output['set_name']
-                         }
-        sheet = sheet.append(insert_column, ignore_index=True)
-        sheet.to_excel('输出.xlsx', index=False)
+        workbook = open_workbook(
+            os.getcwd() + "\\output.xls", formatting_info=True)  # 打开工作簿
+        sheets = workbook.sheet_names()  # 获取工作簿中的所有表格
+        worksheet = workbook.sheet_by_name(sheets[0])  # 获取工作簿中所有表格中的的第一个表格
+        rows_old = worksheet.nrows  # 获取表格中已存在的数据的行数
+        new_workbook = copy(workbook)  # 将xlrd对象拷贝转化为xlwt对象
+        new_worksheet = new_workbook.get_sheet(0)  # 获取转化后工作簿中的第一个表格
+
+        new_worksheet.write(rows_old, 0, output['name'])
+        new_worksheet.write(rows_old, 1, output['kind'])
+        new_worksheet.write(rows_old, 2, output['main_attr'])
+        new_worksheet.write(rows_old, 3, output['main_attr_value'])
+        new_worksheet.write(rows_old, 4, output['star'])
+        new_worksheet.write(rows_old, 5, output['lv'])
+        new_worksheet.write(rows_old, 6, output['vice1_attr'])
+        new_worksheet.write(rows_old, 7, output['vice1_num'])
+        new_worksheet.write(rows_old, 8, output['vice2_attr'])
+        new_worksheet.write(rows_old, 9, output['vice2_num'])
+        new_worksheet.write(rows_old, 10, output['vice3_attr'])
+        new_worksheet.write(rows_old, 11, output['vice3_num'])
+        new_worksheet.write(rows_old, 12, output['vice4_attr'])
+        new_worksheet.write(rows_old, 13, output['vice4_num'])
+        new_worksheet.write(rows_old, 14, output['set_name'])
+        new_workbook.save(os.getcwd() + "\\output.xls")

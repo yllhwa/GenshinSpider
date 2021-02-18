@@ -10,7 +10,6 @@
 
 (2021/2/18 统计，项目开发中，准确度会不断上升。也可以用高精度接口获得更好的效果)
 
-
 ## 使用说明
 
 1. 修改 mainwindw.py(mainwindow_1080p.py)中的 access_token 为自己的百度文字识别 access_token
@@ -33,11 +32,14 @@
 输出表格：  
 [![ygWoiF.md.png](https://s3.ax1x.com/2021/02/17/ygWoiF.md.png)](https://imgchr.com/i/ygWoiF)
 
-## TODO
+## LOG
 
 - [x] 重构、整理代码(2021/2/17)
 - [x] 常见不合理错误纠正(2021/2/18)
-- [ ] 优化抓取速度和反馈(doing)
+- [x] 去除部分依赖以减小打包体积(已替换 pandas 依赖为 xlrd 和 xlutils，打包体积减半为 38MB)(2021/2/18)
+- [ ] 将配置项分离为文件(doing)
+- [ ] 重构、整理代码
+- [ ] 优化抓取速度和反馈
 - [ ] 其他界面抓取
 - [ ] 武器等抓取
 
