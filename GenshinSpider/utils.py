@@ -1,5 +1,6 @@
-from fuzzywuzzy.fuzz import partial_ratio
 from requests import post
+
+from fuzzywuzzy.fuzz import partial_ratio
 
 
 class Artifact:

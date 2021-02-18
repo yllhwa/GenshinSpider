@@ -2,4 +2,5 @@ Pipfile
 Pipfile.lock
 dist/*
 build/*
+GenshinSpider/__pycache__/*
 *.spec

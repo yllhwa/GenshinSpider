@@ -1,9 +1,10 @@
+from time import sleep
+
 import win32api
 import win32con
 import win32gui
 import win32print
 from PIL import ImageGrab
-from time import sleep
 
 
 def get_real_resolution():

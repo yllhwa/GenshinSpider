@@ -1,9 +1,10 @@
 import sys
+
 from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMessageBox
-from mainwindow import mainwindow
 
+from mainwindow import mainwindow
 from readConfig import read_config
 
 

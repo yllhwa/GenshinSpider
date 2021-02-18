@@ -1,16 +1,15 @@
-from Ui_MainWindow import Ui_MainWindow
-
-import json
-from PyQt5.QtWidgets import QMessageBox
-from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 import os
-
+import json
 from base64 import b64encode
 from io import BytesIO
+
+from PyQt5.QtWidgets import QMessageBox
+from PyQt5 import QtCore, QtGui, QtWidgets
 from xlrd import open_workbook
 from xlutils.copy import copy
 
+from Ui_MainWindow import Ui_MainWindow
 from printScreen import print_screen
 from utils import *
 
