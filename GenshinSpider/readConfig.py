@@ -4,7 +4,7 @@ import os
 
 def read_config():
     conn = ConfigParser()
-    file_path = os.path.join(os.path.abspath('.'), 'config.ini')
+    file_path = os.getcwd() + "\\config.ini"
     if not os.path.exists(file_path):
         raise FileNotFoundError("配置文件不存在")
 

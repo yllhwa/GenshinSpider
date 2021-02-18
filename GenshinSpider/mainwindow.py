@@ -76,22 +76,33 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
         return output
 
     def on_grab_btn_clicked(self):
-        # self.window.showMinimized()
-        img = print_screen()
+        try:
+            img = print_screen()
+        except:
+            QMessageBox.warning(self, "失败", "截取原神窗口失败")
+            return
         output_buffer = BytesIO()
         img.save(output_buffer, format='JPEG')
         byte_data = output_buffer.getvalue()
         img = b64encode(byte_data)
-        artifact = get_stat(img, self.url, self.access_token)
+        try:
+            artifact = get_stat(img, self.url, self.access_token)
+        except:
+            QMessageBox.warning(self, "出错", "识别圣遗物出错")
+            return
         self.set_text(artifact)
-        # self.window.showNormal()
+        QMessageBox.about(self, "成功", "已成功抓取")
 
     def on_save_btn_clicked(self):
         output = {}
         output = self.get_text()
         clipboard = QtWidgets.QApplication.clipboard()
         clipboard.setText(json.dumps(output, indent=4, ensure_ascii=False))
-        self.add_to_excel(output)
+        try:
+            self.add_to_excel(output)
+        except:
+            QMessageBox.warning(self, "出错", "保存到excel出错")
+            return
         QMessageBox.about(self, "成功", "已经复制到剪贴板以及保存到excel")
 
     def add_to_excel(self, output):
