@@ -44,9 +44,14 @@ def get_name(kind, name):
         "理之冠": ["酒渍船帽", "破冰踏雪的回音", "不动玄石之相", "夏祭之面", "祭雷礼冠", "祭火礼冠", "祭水礼冠", "祭冰礼冠", "游医的方巾", "学士的镜片", "赌徒的耳环", "染血的铁假面", "渡火者的智慧", "流放者头冠", "宗室面具", "勇士的冠冕",
                 "守护束带", "武人的头巾", "角斗士的凯旋", "翠绿的猎人之冠", "指挥的礼帽", "焦灼的魔女帽", "教官的帽子", "唤雷的头冠", "战狂的鬼面", "平雷之冠", "少女易逝的芳颜", "奇迹耳坠", "感别之冠", "幸运儿银冠", "冒险家头带"]
     }
+    out_name = ''
+    max = 0
     for set_name in name_list[kind]:
-        if partial_ratio(set_name, name) > 75:
-            return set_name
+        ratio = partial_ratio(set_name, name)
+        if ratio > max:
+            max = ratio
+            out_name = set_name
+    return out_name
 
 
 def get_kind(kind):
