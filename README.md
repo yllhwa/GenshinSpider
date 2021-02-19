@@ -30,7 +30,8 @@ use：使用高精度还是普通接口(accurate_url/general_url)
 
 window_title:要抓取的窗口名，主要方便 PS 端/手机模拟器使用  
 left,top,right,bottom:面板在窗口中的位置(按照比例出现,如 left=0.67 表示 left 线段占总窗口的 67%)(**典型的 16:9 分辨率使用预置选项即可**)  
-![setting](https://github.com/yllhwa/GenshinSpider/blob/main/img/etting.png)
+参照下图(在仓库img文件夹)：
+![setting](https://github.com/yllhwa/GenshinSpider/blob/main/img/setting.png)
 
 ## 输出
 
