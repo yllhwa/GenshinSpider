@@ -49,9 +49,7 @@ def print_screen(window_title, left, top, right, bottom):
     sleep(0.5)
     (x1, y1, x2, y2) = get_window_pos(handle)
     img = ImageGrab.grab((x1, y1, x2, y2))
-    img.show()
     weight, height = img.size
     box = (weight*left, height*top, weight*right, height*bottom)
     img = img.crop(box)
-    img.show()
     return img
