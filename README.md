@@ -18,6 +18,20 @@
 4. 运行 程序(此时可以隐藏原神窗口)
 5. 点击抓取按钮抓取当前显示的圣遗物，点击保存按钮保存
 
+## 配置文件说明
+
+### [api]
+
+**access_token**:百度 ocr access_token 获取方法不再赘述  
+accurate_url/general_url:api 地址，一般不用更改  
+use：使用高精度还是普通接口(accurate_url/general_url)
+
+### [grasp_setting]
+
+window_title:要抓取的窗口名，主要方便 PS 端/手机模拟器使用  
+left,top,right,bottom:面板在窗口中的位置(按照比例出现,如 left=0.67 表示 left 线段占总窗口的 67%)(**典型的 16:9 分辨率使用预置选项即可**)  
+![setting](https://github.com/yllhwa/GenshinSpider/blob/main/img/etting.png)
+
 ## 输出
 
 - 以 json 格式保存到剪贴板

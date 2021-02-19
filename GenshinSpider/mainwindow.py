@@ -76,9 +76,10 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def on_grab_btn_clicked(self):
         try:
-            img = print_screen()
+            img = print_screen(self.window_title, self.left,
+                               self.top, self.right, self.bottom)
         except:
-            QMessageBox.warning(self, "失败", "截取原神窗口失败")
+            QMessageBox.warning(self, "失败", "截取"+self.window_title+"窗口失败")
             return
         output_buffer = BytesIO()
         img.save(output_buffer, format='JPEG')

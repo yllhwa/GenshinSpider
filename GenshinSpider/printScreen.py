@@ -42,14 +42,16 @@ def get_window_pos(handle):
     return [i * screen_scale_rate for i in win32gui.GetWindowRect(handle)]
 
 
-def print_screen():
-    handle = get_window_handle('原神')
+def print_screen(window_title, left, top, right, bottom):
+    handle = get_window_handle(window_title)
     while (win32gui.IsIconic(handle)):
         pass
     sleep(0.5)
     (x1, y1, x2, y2) = get_window_pos(handle)
     img = ImageGrab.grab((x1, y1, x2, y2))
+    img.show()
     weight, height = img.size
-    box = (weight*0.67, height*0.15, weight*0.936, height*0.846)
+    box = (weight*left, height*top, weight*right, height*bottom)
     img = img.crop(box)
+    img.show()
     return img
