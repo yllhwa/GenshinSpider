@@ -91,7 +91,11 @@ def get_stat(img, request_url, access_token):
     params = {"image": img}
     request_url = request_url + "?access_token=" + access_token
     headers = {'content-type': 'application/x-www-form-urlencoded'}
-    response = post(request_url, data=params, headers=headers)
+    proxies = {
+        "http": "",
+        "https": "",
+    }
+    response = post(request_url, data=params, headers=headers, proxies=proxies)
     # print(response.text)
 
     def get_set_list_index(result):
