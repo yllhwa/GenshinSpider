@@ -1,3 +1,11 @@
+'''
+引用声明:
+本文件代码初始引用于:
+https://github.com/kyloris0660/GenshinArtifactRecorder/blob/08f93b41cdd68eca128a1ba0c70fd1d36c3ea923/utils.py
+作者为:
+https://github.com/kyloris0660
+经过修改以获得更好的识别效果
+'''
 from requests import post
 
 from fuzzywuzzy.fuzz import partial_ratio
@@ -146,7 +154,6 @@ def get_stat(img, request_url, access_token):
         artifact.star = len(result[4])
         if result[5][0] == '+':
             artifact.lv = int(result[5])
-        # 下面的代码是屎山，是由历史遗留问题(变量名)产生的，有时间再重构，先跑起来
         for item in result[5:]:
             if '+' in item:
                 if artifact.vice_stat0 == '':
