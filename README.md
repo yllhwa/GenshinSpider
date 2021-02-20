@@ -13,6 +13,8 @@
 
 ## 使用教程
 
+> 打包好的exe文件在右侧release获取  
+
 ### 1.修改 config.ini
 
 <details>
