@@ -13,8 +13,77 @@ from Ui_MainWindow import Ui_MainWindow
 from printScreen import print_screen
 from utils import *
 
+set_name_translation = {
+    "悠古的磐岩": "archaicPetra",
+    "沉沦之心": "heartOfDepth",
+    "冰风迷途的勇士": "blizzardStrayer",
+    "逆飞的流星": "retracingBolide",
+    "昔日宗室之仪": "noblesseOblige",
+    "角斗士的终幕礼": "gladiatorFinale",
+    "被怜爱的少女": "maidenBeloved",
+    "翠绿之影": "viridescentVenerer",
+    "渡过烈火的贤人": "lavaWalker",
+    "炽烈的炎之魔女": "crimsonWitch",
+    "平息雷鸣的尊者": "thunderSmoother",
+    "如雷的盛怒": "thunderingFury",
+    "染血的骑士道": "bloodstainedChivalry",
+    "流浪大地的乐团": "wandererTroupe",
+    "学士": "scholar",
+    "赌徒": "gambler",
+    "奇迹": "tinyMiracle",
+    "武人": "martialArtist",
+    "勇士之心": "braveHeart",
+    "行者之心": "resolutionOfSojourner",
+    "守护之心": "defenderWill",
+    "战狂": "berserker",
+    "教官": "instructor",
+    "流放者": "exile",
+    "冒险家": "adventurer",
+    "幸运儿": "luckyDog",
+    "游医": "travelingDoctor",
+    "祭雷之人": "prayersForWisdom",
+    "祭冰之人": "prayersToSpringtime",
+    "祭火之人": "prayersForIllumination",
+    "祭水之人": "prayersForDestiny"
+}
+kind_translation = {
+    "生之花": "flower",
+    "死之羽": "feather",
+    "时之沙": "sand",
+    "空之杯": "cup",
+    "理之冠": "head"
+}
+Tag_name_translation = {
+    "治疗效果": "cureEffect",
+    "生命值": "life",
+    "攻击力": "attack",
+    "防御力": "defend",
+    "暴击率": "critical",
+    "暴击伤害": "criticalDamage",
+    "元素精通": "elementalMastery",
+    "元素充能效率": "recharge",
+    "雷元素伤害加成": "thunderBonus",
+    "火元素伤害加成": "fireBonus",
+    "水元素伤害加成": "waterBonus",
+    "冰元素伤害加成": "iceBonus",
+    "风元素伤害加成": "windBonus",
+    "岩元素伤害加成": "rockBonus",
+    "物理伤害加成": "physicalBonus",
+    "伤害加成": "bonus",
+    "平A伤害加成": "aBonus",
+    "重击伤害加成": "bBonus",
+    "E伤害加成": "eBonus",
+    "Q伤害加成": "qBonus"
+    # Static
+    # Percentage
+}
+
 
 class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
+    json_dict = {"flower": [], "feather": [],
+                 "sand": [], "cup": [], "head": []}
+    id = 0
+
     def __init__(self):
         super(mainwindow, self).__init__()
         self.window = QtWidgets.QMainWindow()
@@ -96,8 +165,130 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def on_save_btn_clicked(self):
         output = {}
         output = self.get_text()
-        clipboard = QtWidgets.QApplication.clipboard()
-        clipboard.setText(json.dumps(output, indent=4, ensure_ascii=False))
+        try:
+            single_artifact = {}
+            single_artifact["setName"] = set_name_translation[output["set_name"]]
+            single_artifact["detailName"] = output["name"]
+            single_artifact["position"] = kind_translation[output["kind"]]
+            mainTag = {"name": "", "value": ""}
+            if "生命值" == output["main_attr"] or "攻击力" == output["main_attr"] or "防御力" == output["main_attr"]:
+                if "%" in output["main_attr_value"]:
+                    mainTag["name"] = Tag_name_translation[output["main_attr"]
+                                                        ] + "Percentage"
+                    mainTag["value"] = float(
+                        output["main_attr_value"].replace("%", ""))/100
+                else:
+                    mainTag["name"] = Tag_name_translation[output["main_attr"]
+                                                        ] + "Static"
+                    mainTag["value"] = float(output["main_attr_value"])
+            else:
+                mainTag["name"] = Tag_name_translation[output["main_attr"]]
+                if "%" in output["main_attr_value"]:
+                    mainTag["value"] = float(
+                        output["main_attr_value"].replace("%", "")) / 100
+                else:
+                    mainTag["value"] = float(output["main_attr_value"])
+            single_artifact["mainTag"] = mainTag
+
+            normalTags = []
+            if(output["vice1_attr"]):
+                vice1 = {"name": "", "value": ""}
+                # vice1
+                if "生命值" == output["vice1_attr"] or "攻击力" == output["vice1_attr"] or "防御力" == output["vice1_attr"]:
+                    if "%" in output["vice1_num"]:
+                        vice1["name"] = Tag_name_translation[output["vice1_attr"]
+                                                            ] + "Percentage"
+                        vice1["value"] = float(
+                            output["vice1_num"].replace("%", ""))/100
+                    else:
+                        vice1["name"] = Tag_name_translation[output["vice1_attr"]
+                                                            ] + "Static"
+                        vice1["value"] = float(output["vice1_num"])
+                else:
+                    vice1["name"] = Tag_name_translation[output["vice1_attr"]]
+                    if "%" in output["vice1_num"]:
+                        vice1["value"] = float(
+                            output["vice1_num"].replace("%", "")) / 100
+                    else:
+                        vice1["value"] = float(output["vice1_num"])
+                normalTags.append(vice1)
+            # vice2
+            if(output["vice2_attr"]):
+                vice2 = {"name": "", "value": ""}
+                if "生命值" == output["vice2_attr"] or "攻击力" == output["vice2_attr"] or "防御力" == output["vice2_attr"]:
+                    if "%" in output["vice2_num"]:
+                        vice2["name"] = Tag_name_translation[output["vice2_attr"]
+                                                            ] + "Percentage"
+                        vice2["value"] = float(
+                            output["vice2_num"].replace("%", ""))/100
+                    else:
+                        vice2["name"] = Tag_name_translation[output["vice2_attr"]
+                                                            ] + "Static"
+                        vice2["value"] = float(output["vice2_num"])
+                else:
+                    vice2["name"] = Tag_name_translation[output["vice2_attr"]]
+                    if "%" in output["vice2_num"]:
+                        vice2["value"] = float(
+                            output["vice2_num"].replace("%", "")) / 100
+                    else:
+                        vice2["value"] = float(output["vice2_num"])
+                normalTags.append(vice2)
+
+            # vice3
+            if(output["vice3_attr"]):
+                vice3 = {"name": "", "value": ""}
+                if "生命值" == output["vice3_attr"] or "攻击力" == output["vice3_attr"] or "防御力" == output["vice3_attr"]:
+                    if "%" in output["vice3_num"]:
+                        vice3["name"] = Tag_name_translation[output["vice3_attr"]
+                                                            ] + "Percentage"
+                        vice3["value"] = float(
+                            output["vice3_num"].replace("%", ""))/100
+                    else:
+                        vice3["name"] = Tag_name_translation[output["vice3_attr"]
+                                                            ] + "Static"
+                        vice3["value"] = float(output["vice3_num"])
+                else:
+                    vice3["name"] = Tag_name_translation[output["vice3_attr"]]
+                    if "%" in output["vice3_num"]:
+                        vice3["value"] = float(
+                            output["vice3_num"].replace("%", "")) / 100
+                    else:
+                        vice3["value"] = float(output["vice3_num"])
+                normalTags.append(vice3)
+
+            # vice4
+            if(output["vice4_attr"]):
+                vice4 = {"name": "", "value": ""}
+                if "生命值" == output["vice4_attr"] or "攻击力" == output["vice4_attr"] or "防御力" == output["vice4_attr"]:
+                    if "%" in output["vice4_num"]:
+                        vice4["name"] = Tag_name_translation[output["vice4_attr"]
+                                                            ] + "Percentage"
+                        vice4["value"] = float(
+                            output["vice4_num"].replace("%", ""))/100
+                    else:
+                        vice4["name"] = Tag_name_translation[output["vice4_attr"]
+                                                            ] + "Static"
+                        vice4["value"] = float(output["vice4_num"])
+                else:
+                    vice4["name"] = Tag_name_translation[output["vice4_attr"]]
+                    if "%" in output["vice4_num"]:
+                        vice4["value"] = float(
+                            output["vice4_num"].replace("%", "")) / 100
+                    else:
+                        vice4["value"] = float(output["vice4_num"])
+                normalTags.append(vice4)
+
+            single_artifact["normalTags"] = normalTags
+            single_artifact["omit"] = False
+            single_artifact["id"] = hash(json.dumps(single_artifact))
+            print(single_artifact)
+            self.json_dict[kind_translation[output["kind"]]].append(
+                single_artifact)
+            clipboard = QtWidgets.QApplication.clipboard()
+            clipboard.setText(json.dumps(
+                self.json_dict, ensure_ascii=False))
+        except:
+            QMessageBox.warning(self, "出错", "复制到剪贴板出错")
         try:
             self.add_to_excel(output)
         except:
