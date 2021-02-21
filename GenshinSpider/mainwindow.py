@@ -24,7 +24,7 @@ set_name_translation = {
     "翠绿之影": "viridescentVenerer",
     "渡过烈火的贤人": "lavaWalker",
     "炽烈的炎之魔女": "crimsonWitch",
-    "平息雷鸣的尊者": "thunderSmoother",
+    "平息鸣雷的尊者": "thunderSmoother",
     "如雷的盛怒": "thunderingFury",
     "染血的骑士道": "bloodstainedChivalry",
     "流浪大地的乐团": "wandererTroupe",
@@ -174,12 +174,12 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
             if "生命值" == output["main_attr"] or "攻击力" == output["main_attr"] or "防御力" == output["main_attr"]:
                 if "%" in output["main_attr_value"]:
                     mainTag["name"] = Tag_name_translation[output["main_attr"]
-                                                        ] + "Percentage"
+                                                           ] + "Percentage"
                     mainTag["value"] = float(
                         output["main_attr_value"].replace("%", ""))/100
                 else:
                     mainTag["name"] = Tag_name_translation[output["main_attr"]
-                                                        ] + "Static"
+                                                           ] + "Static"
                     mainTag["value"] = float(output["main_attr_value"])
             else:
                 mainTag["name"] = Tag_name_translation[output["main_attr"]]
@@ -197,12 +197,12 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 if "生命值" == output["vice1_attr"] or "攻击力" == output["vice1_attr"] or "防御力" == output["vice1_attr"]:
                     if "%" in output["vice1_num"]:
                         vice1["name"] = Tag_name_translation[output["vice1_attr"]
-                                                            ] + "Percentage"
+                                                             ] + "Percentage"
                         vice1["value"] = float(
                             output["vice1_num"].replace("%", ""))/100
                     else:
                         vice1["name"] = Tag_name_translation[output["vice1_attr"]
-                                                            ] + "Static"
+                                                             ] + "Static"
                         vice1["value"] = float(output["vice1_num"])
                 else:
                     vice1["name"] = Tag_name_translation[output["vice1_attr"]]
@@ -218,12 +218,12 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 if "生命值" == output["vice2_attr"] or "攻击力" == output["vice2_attr"] or "防御力" == output["vice2_attr"]:
                     if "%" in output["vice2_num"]:
                         vice2["name"] = Tag_name_translation[output["vice2_attr"]
-                                                            ] + "Percentage"
+                                                             ] + "Percentage"
                         vice2["value"] = float(
                             output["vice2_num"].replace("%", ""))/100
                     else:
                         vice2["name"] = Tag_name_translation[output["vice2_attr"]
-                                                            ] + "Static"
+                                                             ] + "Static"
                         vice2["value"] = float(output["vice2_num"])
                 else:
                     vice2["name"] = Tag_name_translation[output["vice2_attr"]]
@@ -240,12 +240,12 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 if "生命值" == output["vice3_attr"] or "攻击力" == output["vice3_attr"] or "防御力" == output["vice3_attr"]:
                     if "%" in output["vice3_num"]:
                         vice3["name"] = Tag_name_translation[output["vice3_attr"]
-                                                            ] + "Percentage"
+                                                             ] + "Percentage"
                         vice3["value"] = float(
                             output["vice3_num"].replace("%", ""))/100
                     else:
                         vice3["name"] = Tag_name_translation[output["vice3_attr"]
-                                                            ] + "Static"
+                                                             ] + "Static"
                         vice3["value"] = float(output["vice3_num"])
                 else:
                     vice3["name"] = Tag_name_translation[output["vice3_attr"]]
@@ -262,12 +262,12 @@ class mainwindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 if "生命值" == output["vice4_attr"] or "攻击力" == output["vice4_attr"] or "防御力" == output["vice4_attr"]:
                     if "%" in output["vice4_num"]:
                         vice4["name"] = Tag_name_translation[output["vice4_attr"]
-                                                            ] + "Percentage"
+                                                             ] + "Percentage"
                         vice4["value"] = float(
                             output["vice4_num"].replace("%", ""))/100
                     else:
                         vice4["name"] = Tag_name_translation[output["vice4_attr"]
-                                                            ] + "Static"
+                                                             ] + "Static"
                         vice4["value"] = float(output["vice4_num"])
                 else:
                     vice4["name"] = Tag_name_translation[output["vice4_attr"]]
